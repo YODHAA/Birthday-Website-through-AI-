@@ -1,0 +1,6 @@
+{
+  "name": "KeepDate - Birthday Reminder",
+  "description": "Warm and reliable birthday reminder application with multi-stage notifications, gift notes, calendar view, and time-zone precision.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

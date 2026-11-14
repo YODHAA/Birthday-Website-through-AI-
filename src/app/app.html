@@ -1,0 +1,41 @@
+<div class="min-h-screen flex flex-col lg:flex-row bg-[#FAF9F6]">
+  <!-- Sidebar Navigation -->
+  <app-sidebar (openAddModal)="openAddModal()" />
+
+  <!-- Main Content Canvas -->
+  <main class="flex-1 min-w-0 px-4 sm:px-8 py-6 lg:py-8 max-w-7xl mx-auto w-full">
+    @switch (birthdayService.activeTab()) {
+      @case ('dashboard') {
+        <app-dashboard 
+          (openAddModal)="openAddModal()" 
+          (openEditModal)="openEditModal($event)" 
+          (openDeleteModal)="openDeleteModal($event)" 
+        />
+      }
+      @case ('calendar') {
+        <app-calendar />
+      }
+      @case ('notifications') {
+        <app-notifications-log />
+      }
+      @case ('settings') {
+        <app-settings />
+      }
+    }
+  </main>
+</div>
+
+<!-- Modals -->
+@if (showAddModal()) {
+  <app-birthday-modal 
+    [birthdayToEdit]="birthdayToEdit()" 
+    (dismiss)="showAddModal.set(false)" 
+  />
+}
+
+@if (birthdayToDelete(); as b) {
+  <app-delete-modal 
+    [birthday]="b" 
+    (dismiss)="birthdayToDelete.set(null)" 
+  />
+}
